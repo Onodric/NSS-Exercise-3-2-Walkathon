@@ -1,5 +1,5 @@
 // Include Normalize in the final CSS
-@import 'normalize';
+// @import 'normalize';
 // Include our fav GoogleFonts
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Permanent+Marker|Proza+Libre|Raleway');
 
@@ -37,6 +37,7 @@ body {
   padding: 8em 2.5% 2em 2.5%;
   min-height: 100vh;
   margin: 0 auto;
+  z-index: 1;
 
   h1, h2, h3, h4, h5 {
     font-family: $hw-head-stack;
@@ -47,9 +48,11 @@ body {
 #page-head {
   width: 100%;
   position: fixed;
+  top: 0;
   background: $hex-color-prime;
   color: $rgb-color-second;
   box-shadow: inset 0 0 3em $rgb-color-acc-dark;
+  z-index: 5;
 
   h1 {
     color: $rgb-color-acc-light;
@@ -63,12 +66,14 @@ body {
 
 #page-foot {
   width: 100%;
-  // position: fixed;
+  position: fixed;
+  bottom: 0;
   background: $hex-color-prime;
   color: $rgb-color-second;
   box-shadow: inset 0 0 3em $rgb-color-acc-dark;
   text-align: center;
   padding: 1em;
+  z-index: 5;
 
   p {
     font-weight: bold;

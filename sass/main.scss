@@ -1,5 +1,17 @@
 @import 'template';
 
+#infoCategories {
+  font-weight: bold;
+}
+
+tr td:first-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+thead {
+  font-weight: bold;
+}
 
 nav {
   font-size: .9em;
@@ -26,22 +38,8 @@ footer {
   text-align: center;
 }
 
-body {
-  background: rgba(34,35,88,.1);
-}
-
 .nav-link {
   margin-top: .25em;
-}
-
-.car-card {
-  background: white;
-  border: 2px solid black;
-  border-radius: 1em;
-  height: 22em;
-  padding: 1em;
-  box-shadow: 2px 2px 5px rgba(37,3,37,.7),
-        inset 2px 2px 5px rgba(37,3,37,.7);
 }
 
 .container .row {
@@ -52,4 +50,8 @@ body {
 #insert {
   height: 78vh;
   overflow-y: auto;
+}
+
+.radio input[type=radio], .radio-inline input[type=radio] {
+  margin-top: 0;
 }
