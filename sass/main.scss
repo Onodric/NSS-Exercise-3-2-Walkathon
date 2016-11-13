@@ -1,0 +1,61 @@
+@import 'template';
+
+#infoCategories {
+  font-weight: bold;
+}
+
+tr td:first-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+thead {
+  font-weight: bold;
+}
+
+nav {
+  font-size: .9em;
+}
+
+nav h1 {
+  margin: 0 .5em 0 0;
+  display: inline-block;
+}
+
+nav input {
+  padding: .5em;
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+header {
+  height: 15vh;
+}
+
+footer {
+  padding-top: .25em;
+  height: 5h;
+  text-align: center;
+}
+
+.nav-link {
+  margin-top: .25em;
+}
+
+.container .row {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#insert {
+  height: 78vh;
+  overflow-y: auto;
+}
+
+.radio input[type=radio], .radio-inline input[type=radio] {
+  margin-top: 0;
+}
+
+.hidden {
+  display: none;
+}
