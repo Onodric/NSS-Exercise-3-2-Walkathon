@@ -5,7 +5,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Walk-a-Thon | IIFEs</title>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -17,7 +16,15 @@
     </header>
     <main id="wrapper" class="container">
       <div class="row">
+<!-- This should use col-md-6 -->
+  <!-- For display on the page, use Bootstrap's grid system and styling classes to get the following effects. -->
+    <!-- + at desktop size display the table on the left and form on the right with some space around the sides -->
+    <!-- + the page should have the same display on a tablet in landscape mode, but with no space at the sides -->
+    <!-- + on mobile/vertical tablet the table should display above the form -->
+    <!-- + the table entries should be alternately striped -->
+  <!-- On top of these styling requirements, feel free to apply any of your own personal styling via your own CSS or Bootstraps myriad styling effects to enhance the display style and usability of your page. -->
         <div class="col-md-6">
+<!-- + a table to display each donor's submission information -->
           <h3>User Form Submission</h3>
           <table class="table table-responsive table-striped table-bordered">
             <caption>Please Confirm Your Donation Information</caption>
@@ -29,7 +36,10 @@
             </thead>
             <tfoot>
               <tr>
-                <td>Footer content 1</td>
+                <td>
+                  <p id="doneski" class="hidden">Confirmed!</p>
+                  <button id="confirm" class="btn btn-default hidden">Confirm!</button>
+                </td>
               </tr>
             </tfoot>
             <tbody>
@@ -39,55 +49,54 @@
               </colgroup>
               <tr>
                 <td>Donation Type</td>
-                <td id="userDonType">User Information</td>
+                <td class="tableData" id="userDonType">User Information</td>
               </tr>
               <tr>
                 <td>Donation Amount</td>
-                <td id="userDonAmt">User Information</td>
+                <td class="tableData" id="userDonAmt">User Information</td>
               </tr>
               <tr>
                 <td>Full Name</td>
-                <td id="userName">User Information</td>
+                <td class="tableData" id="userName">User Information</td>
               </tr>
               <tr>
                 <td>Address</td>
-                <td id="userAddress">User Information</td>
+                <td class="tableData" id="userAddress">User Information</td>
               </tr>
               <tr>
                 <td>City</td>
-                <td id="userCity">User Information</td>
+                <td class="tableData" id="userCity">User Information</td>
               </tr>
               <tr>
                 <td>State</td>
-                <td id="userState">User Information</td>
+                <td class="tableData" id="userState">User Information</td>
               </tr>
               <tr>
                 <td>Zip Code</td>
-                <td id="userZip">User Information</td>
+                <td class="tableData" id="userZip">User Information</td>
               </tr>
               <tr>
                 <td>Email</td>
-                <td id="userEmail">User Information</td>
+                <td class="tableData" id="userEmail">User Information</td>
               </tr>
               <tr>
                 <td>Telephone</td>
-                <td id="userTelephone">User Information</td>
+                <td class="tableData" id="userTelephone">User Information</td>
               </tr>
               <tr>
-                <td>Payment Type</td>
-                <td id="userPayType">User Information</td>
+                <td>Credit Card Number</td>
+                <td class="tableData" id="userCcNum">xxxx-xxxx-xxxx-xxxx</td>
               </tr>
               <tr>
-                <td>Payment Information</td>
-                <td id="userPayInfo">User Information</td>
+                <td>Credit Card Expiration</td>
+                <td class="tableData" id="userCcExp">mm/yy</td>
               </tr>
             </tbody>
           </table>
         </div>
-        
 
-
-        <form class="col-md-6">
+<!-- + a form for user information submission -->
+        <form class="col-md-6" id="dataSubmit">
           <h3>Donor Information</h3>
           <div class="col-md-12 form-group">
             <form class="form-inline">
@@ -95,11 +104,13 @@
                 <label class="sr-only" for="exampleInputAmount">Donation Amount (in dollars)</label>
                 <div class="input-group">
                   <div class="input-group-addon">$</div>
-                  <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                  <input type="text" class="form-control" id="donateAmount" placeholder="Amount">
                   <div class="input-group-addon">.00</div>
                 </div>
               </div>
             </form>
+<!-- + the ability to select whether the donation will be a single amount or per lap -->
+            <h4>Donation Type</h4>
             <div class="radio">
               <label>
                 <input type="radio" name="donationType" id="donatePerLap" value="option1" checked>
@@ -207,21 +218,23 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-8">
-                <label for="ccNum">Credit Card Number</label>
-                <input type="text" class="form-control" id="address1" placeholder="xxxx-xxxx-xxxx-xxxx">
+              <div class="col-md-7">
+                <label for="ccNum">Credit Card Number:</label>
+                <input type="text" class="form-control" id="ccNum" placeholder="xxxx-xxxx-xxxx-xxxx">
               </div>
-              <div class="col-md-2">
-                <label for="ccExp">Exp. Date</label>
+              <div class="col-md-3">
+                <label for="ccExp">Exp. Date:</label>
                 <input type="text" class="form-control" id="ccExp" placeholder="mm/yy">
               </div>
               <div class="col-md-2">
-                <label for="cvsNum">CVS</label>
-                <input type="text" class="form-control" id="cvsNum" placeholder="xxx">
+                <label for="cvvNum">CVV:</label>
+                <input type="text" class="form-control" id="cvvNum" placeholder="xxx">
               </div>
             </div>
-            <button class="btn btn-default" id="btnClear">Clear</button>
-            <button type="submit" class="btn btn-default" id="btnSubmit">Submit</button>
+  <!-- + a button labeled Cancel to clear the submission form -->
+            <button class="btn btn-default" id="btnClear">cancel</button>
+  <!-- + a button labeled Donate to process the submission -->
+            <button type="button" class="btn btn-default" id="btnSubmit">Donate!</button>
           </div>
         </form>
       </div>
@@ -229,27 +242,8 @@
     <footer id="page-foot" class="container-fluid">
       <span>&copy; 2016 26.2 Industries</span>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="javascripts/main.js"></script>
   </body>
 </html>
-
-
-<!-- + a form for user information submission -->
-  <!-- + the ability to select whether the donation will be a single amount or per lap -->
-
-<!-- + a table to display each donor's submission information -->
-  <!-- + a button labeled Donate to process the submission -->
-  <!-- + a button labeled Cancel to clear the submission form -->
-
-<!-- The donor information should be stored as JS objects that contain their content type as keys and the submitted information as the value. `{name: "John Donut", pledge: 70}` -->
-
-<!-- This should use col-md-6 -->
-
-  <!-- For display on the page, use [Bootstrap](https://getbootstrap.com) to style the form and table elements. Use Bootstrap's grid system and styling classes to get the following effects. -->
-
-  <!-- + at desktop size display the table on the left and form on the right with some space around the sides -->
-  <!-- + the page should have the same display on a tablet in landscape mode, but with no space at the sides -->
-  <!-- + on mobile/vertical tablet the table should display above the form -->
-  <!-- + the table entries should be alternately striped -->
-
-  <!-- On top of these styling requirements, feel free to apply any of your own personal styling via your own CSS or Bootstraps myriad styling effects to enhance the display style and usability of your page. -->

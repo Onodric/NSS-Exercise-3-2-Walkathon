@@ -88,4 +88,7 @@ footer {
 .radio input[type=radio], .radio-inline input[type=radio] {
   margin-top: 0; }
 
+.hidden {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */
